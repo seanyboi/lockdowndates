@@ -6,8 +6,8 @@ title: lockdowndates
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Retrieve the dates that countries around the world went into lockdown during the covid pandemic."
-description: "Retrieve the dates that countries around the world went into lockdown during the covid pandemic."
+summary: "Retrieve the dates of the restrictions in countries imposed by governments around the world during the covid-19 pandemic."
+description: "Retrieve the dates of the restrictions in countries imposed by governments around the world during the covid-19 pandemic."
 nb_path: "index.ipynb"
 ---
 <!--
@@ -50,7 +50,7 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Fill me in please! Don't forget code examples:</p>
+<p>Single Country</p>
 
 </div>
 </div>
@@ -62,7 +62,9 @@ nb_path: "index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ld</span> <span class="o">=</span> <span class="n">LockdownDates</span><span class="p">(</span><span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-08&quot;</span><span class="p">)</span>
+<span class="n">lockdown_dates</span> <span class="o">=</span> <span class="n">ld</span><span class="o">.</span><span class="n">dates</span><span class="p">()</span>
+<span class="n">lockdown_dates</span>
 </pre></div>
 
     </div>
@@ -74,11 +76,87 @@ nb_path: "index.ipynb"
 
 <div class="output_area">
 
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>2</pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fetching lockdown dates...
+Fetched lockdown dates for: Aruba
+</pre>
 </div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>aruba_country_code</th>
+      <th>aruba_stay_at_home</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-06</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-07</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-08</th>
+      <td>ABW</td>
+      <td>2.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 
 </div>
 
@@ -88,6 +166,782 @@ nb_path: "index.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Multiple Countries</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ld2</span> <span class="o">=</span> <span class="n">LockdownDates</span><span class="p">([</span><span class="s2">&quot;Canada&quot;</span><span class="p">,</span> <span class="s2">&quot;Denmark&quot;</span><span class="p">],</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-08&quot;</span><span class="p">)</span>
+<span class="n">lockdown_dates</span> <span class="o">=</span> <span class="n">ld2</span><span class="o">.</span><span class="n">dates</span><span class="p">()</span>
+<span class="n">lockdown_dates</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fetching lockdown dates...
+Fetched lockdown dates for: Canada, Denmark
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>canada_country_code</th>
+      <th>denmark_country_code</th>
+      <th>canada_stay_at_home</th>
+      <th>denmark_stay_at_home</th>
+    </tr>
+    <tr>
+      <th>timestamp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2022-01-01</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-02</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-03</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-04</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-05</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-06</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-07</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2022-01-08</th>
+      <td>CAN</td>
+      <td>DNK</td>
+      <td>1.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>stay_at_home values:</p>
+<ul>
+<li>NaN - No data available for that date.</li>
+<li>1.0 - recommend not leaving house.</li>
+<li>2.0 -  require not leaving house with exceptions for daily exercise, grocery shopping, and 'essential' trips.</li>
+<li>3.0 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Available-Countries">Available Countries<a class="anchor-link" href="#Available-Countries"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<table>
+<thead><tr>
+<th style="text-align:left">Country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Afghanistan</td>
+</tr>
+<tr>
+<td style="text-align:left">Albania</td>
+</tr>
+<tr>
+<td style="text-align:left">Algeria</td>
+</tr>
+<tr>
+<td style="text-align:left">Andorra</td>
+</tr>
+<tr>
+<td style="text-align:left">Angola</td>
+</tr>
+<tr>
+<td style="text-align:left">Argentina</td>
+</tr>
+<tr>
+<td style="text-align:left">Aruba</td>
+</tr>
+<tr>
+<td style="text-align:left">Australia</td>
+</tr>
+<tr>
+<td style="text-align:left">Austria</td>
+</tr>
+<tr>
+<td style="text-align:left">Azerbaijan</td>
+</tr>
+<tr>
+<td style="text-align:left">Bahamas</td>
+</tr>
+<tr>
+<td style="text-align:left">Bahrain</td>
+</tr>
+<tr>
+<td style="text-align:left">Bangladesh</td>
+</tr>
+<tr>
+<td style="text-align:left">Barbados</td>
+</tr>
+<tr>
+<td style="text-align:left">Belarus</td>
+</tr>
+<tr>
+<td style="text-align:left">Belgium</td>
+</tr>
+<tr>
+<td style="text-align:left">Belize</td>
+</tr>
+<tr>
+<td style="text-align:left">Benin</td>
+</tr>
+<tr>
+<td style="text-align:left">Bermuda</td>
+</tr>
+<tr>
+<td style="text-align:left">Bhutan</td>
+</tr>
+<tr>
+<td style="text-align:left">Bolivia</td>
+</tr>
+<tr>
+<td style="text-align:left">Bosnia and Herzegovina</td>
+</tr>
+<tr>
+<td style="text-align:left">Botswana</td>
+</tr>
+<tr>
+<td style="text-align:left">Brazil</td>
+</tr>
+<tr>
+<td style="text-align:left">Brunei</td>
+</tr>
+<tr>
+<td style="text-align:left">Bulgaria</td>
+</tr>
+<tr>
+<td style="text-align:left">Burkina Faso</td>
+</tr>
+<tr>
+<td style="text-align:left">Burundi</td>
+</tr>
+<tr>
+<td style="text-align:left">Cambodia</td>
+</tr>
+<tr>
+<td style="text-align:left">Cameroon</td>
+</tr>
+<tr>
+<td style="text-align:left">Canada</td>
+</tr>
+<tr>
+<td style="text-align:left">Cape Verde</td>
+</tr>
+<tr>
+<td style="text-align:left">Central African Republic</td>
+</tr>
+<tr>
+<td style="text-align:left">Chad</td>
+</tr>
+<tr>
+<td style="text-align:left">Chile</td>
+</tr>
+<tr>
+<td style="text-align:left">China</td>
+</tr>
+<tr>
+<td style="text-align:left">Colombia</td>
+</tr>
+<tr>
+<td style="text-align:left">Comoros</td>
+</tr>
+<tr>
+<td style="text-align:left">Congo</td>
+</tr>
+<tr>
+<td style="text-align:left">Costa Rica</td>
+</tr>
+<tr>
+<td style="text-align:left">Cote d'Ivoire</td>
+</tr>
+<tr>
+<td style="text-align:left">Croatia</td>
+</tr>
+<tr>
+<td style="text-align:left">Cuba</td>
+</tr>
+<tr>
+<td style="text-align:left">Cyprus</td>
+</tr>
+<tr>
+<td style="text-align:left">Czech Republic</td>
+</tr>
+<tr>
+<td style="text-align:left">Democratic Republic of Congo</td>
+</tr>
+<tr>
+<td style="text-align:left">Denmark</td>
+</tr>
+<tr>
+<td style="text-align:left">Djibouti</td>
+</tr>
+<tr>
+<td style="text-align:left">Dominica</td>
+</tr>
+<tr>
+<td style="text-align:left">Dominican Republic</td>
+</tr>
+<tr>
+<td style="text-align:left">Ecuador</td>
+</tr>
+<tr>
+<td style="text-align:left">Egypt</td>
+</tr>
+<tr>
+<td style="text-align:left">El Salvador</td>
+</tr>
+<tr>
+<td style="text-align:left">Eritrea</td>
+</tr>
+<tr>
+<td style="text-align:left">Estonia</td>
+</tr>
+<tr>
+<td style="text-align:left">Eswatini</td>
+</tr>
+<tr>
+<td style="text-align:left">Ethiopia</td>
+</tr>
+<tr>
+<td style="text-align:left">Faeroe Islands</td>
+</tr>
+<tr>
+<td style="text-align:left">Fiji</td>
+</tr>
+<tr>
+<td style="text-align:left">Finland</td>
+</tr>
+<tr>
+<td style="text-align:left">France</td>
+</tr>
+<tr>
+<td style="text-align:left">Gabon</td>
+</tr>
+<tr>
+<td style="text-align:left">Gambia</td>
+</tr>
+<tr>
+<td style="text-align:left">Georgia</td>
+</tr>
+<tr>
+<td style="text-align:left">Germany</td>
+</tr>
+<tr>
+<td style="text-align:left">Ghana</td>
+</tr>
+<tr>
+<td style="text-align:left">Greece</td>
+</tr>
+<tr>
+<td style="text-align:left">Greenland</td>
+</tr>
+<tr>
+<td style="text-align:left">Guam</td>
+</tr>
+<tr>
+<td style="text-align:left">Guatemala</td>
+</tr>
+<tr>
+<td style="text-align:left">Guinea</td>
+</tr>
+<tr>
+<td style="text-align:left">Guyana</td>
+</tr>
+<tr>
+<td style="text-align:left">Haiti</td>
+</tr>
+<tr>
+<td style="text-align:left">Honduras</td>
+</tr>
+<tr>
+<td style="text-align:left">Hong Kong</td>
+</tr>
+<tr>
+<td style="text-align:left">Hungary</td>
+</tr>
+<tr>
+<td style="text-align:left">Iceland</td>
+</tr>
+<tr>
+<td style="text-align:left">India</td>
+</tr>
+<tr>
+<td style="text-align:left">Indonesia</td>
+</tr>
+<tr>
+<td style="text-align:left">Iran</td>
+</tr>
+<tr>
+<td style="text-align:left">Iraq</td>
+</tr>
+<tr>
+<td style="text-align:left">Ireland</td>
+</tr>
+<tr>
+<td style="text-align:left">Israel</td>
+</tr>
+<tr>
+<td style="text-align:left">Italy</td>
+</tr>
+<tr>
+<td style="text-align:left">Jamaica</td>
+</tr>
+<tr>
+<td style="text-align:left">Japan</td>
+</tr>
+<tr>
+<td style="text-align:left">Jordan</td>
+</tr>
+<tr>
+<td style="text-align:left">Kazakhstan</td>
+</tr>
+<tr>
+<td style="text-align:left">Kenya</td>
+</tr>
+<tr>
+<td style="text-align:left">Kiribati</td>
+</tr>
+<tr>
+<td style="text-align:left">Kosovo</td>
+</tr>
+<tr>
+<td style="text-align:left">Kuwait</td>
+</tr>
+<tr>
+<td style="text-align:left">Kyrgyz Republic</td>
+</tr>
+<tr>
+<td style="text-align:left">Laos</td>
+</tr>
+<tr>
+<td style="text-align:left">Latvia</td>
+</tr>
+<tr>
+<td style="text-align:left">Lebanon</td>
+</tr>
+<tr>
+<td style="text-align:left">Lesotho</td>
+</tr>
+<tr>
+<td style="text-align:left">Liberia</td>
+</tr>
+<tr>
+<td style="text-align:left">Libya</td>
+</tr>
+<tr>
+<td style="text-align:left">Liechtenstein</td>
+</tr>
+<tr>
+<td style="text-align:left">Lithuania</td>
+</tr>
+<tr>
+<td style="text-align:left">Luxembourg</td>
+</tr>
+<tr>
+<td style="text-align:left">Macao</td>
+</tr>
+<tr>
+<td style="text-align:left">Madagascar</td>
+</tr>
+<tr>
+<td style="text-align:left">Malawi</td>
+</tr>
+<tr>
+<td style="text-align:left">Malaysia</td>
+</tr>
+<tr>
+<td style="text-align:left">Mali</td>
+</tr>
+<tr>
+<td style="text-align:left">Malta</td>
+</tr>
+<tr>
+<td style="text-align:left">Mauritania</td>
+</tr>
+<tr>
+<td style="text-align:left">Mauritius</td>
+</tr>
+<tr>
+<td style="text-align:left">Mexico</td>
+</tr>
+<tr>
+<td style="text-align:left">Moldova</td>
+</tr>
+<tr>
+<td style="text-align:left">Monaco</td>
+</tr>
+<tr>
+<td style="text-align:left">Mongolia</td>
+</tr>
+<tr>
+<td style="text-align:left">Morocco</td>
+</tr>
+<tr>
+<td style="text-align:left">Mozambique</td>
+</tr>
+<tr>
+<td style="text-align:left">Myanmar</td>
+</tr>
+<tr>
+<td style="text-align:left">Namibia</td>
+</tr>
+<tr>
+<td style="text-align:left">Nepal</td>
+</tr>
+<tr>
+<td style="text-align:left">Netherlands</td>
+</tr>
+<tr>
+<td style="text-align:left">New Zealand</td>
+</tr>
+<tr>
+<td style="text-align:left">Nicaragua</td>
+</tr>
+<tr>
+<td style="text-align:left">Niger</td>
+</tr>
+<tr>
+<td style="text-align:left">Nigeria</td>
+</tr>
+<tr>
+<td style="text-align:left">Norway</td>
+</tr>
+<tr>
+<td style="text-align:left">Oman</td>
+</tr>
+<tr>
+<td style="text-align:left">Pakistan</td>
+</tr>
+<tr>
+<td style="text-align:left">Palestine</td>
+</tr>
+<tr>
+<td style="text-align:left">Panama</td>
+</tr>
+<tr>
+<td style="text-align:left">Papua New Guinea</td>
+</tr>
+<tr>
+<td style="text-align:left">Paraguay</td>
+</tr>
+<tr>
+<td style="text-align:left">Peru</td>
+</tr>
+<tr>
+<td style="text-align:left">Philippines</td>
+</tr>
+<tr>
+<td style="text-align:left">Poland</td>
+</tr>
+<tr>
+<td style="text-align:left">Portugal</td>
+</tr>
+<tr>
+<td style="text-align:left">Puerto Rico</td>
+</tr>
+<tr>
+<td style="text-align:left">Qatar</td>
+</tr>
+<tr>
+<td style="text-align:left">Romania</td>
+</tr>
+<tr>
+<td style="text-align:left">Russia</td>
+</tr>
+<tr>
+<td style="text-align:left">Rwanda</td>
+</tr>
+<tr>
+<td style="text-align:left">San Marino</td>
+</tr>
+<tr>
+<td style="text-align:left">Saudi Arabia</td>
+</tr>
+<tr>
+<td style="text-align:left">Senegal</td>
+</tr>
+<tr>
+<td style="text-align:left">Serbia</td>
+</tr>
+<tr>
+<td style="text-align:left">Seychelles</td>
+</tr>
+<tr>
+<td style="text-align:left">Sierra Leone</td>
+</tr>
+<tr>
+<td style="text-align:left">Singapore</td>
+</tr>
+<tr>
+<td style="text-align:left">Slovak Republic</td>
+</tr>
+<tr>
+<td style="text-align:left">Slovenia</td>
+</tr>
+<tr>
+<td style="text-align:left">Solomon Islands</td>
+</tr>
+<tr>
+<td style="text-align:left">Somalia</td>
+</tr>
+<tr>
+<td style="text-align:left">South Africa</td>
+</tr>
+<tr>
+<td style="text-align:left">South Korea</td>
+</tr>
+<tr>
+<td style="text-align:left">South Sudan</td>
+</tr>
+<tr>
+<td style="text-align:left">Spain</td>
+</tr>
+<tr>
+<td style="text-align:left">Sri Lanka</td>
+</tr>
+<tr>
+<td style="text-align:left">Sudan</td>
+</tr>
+<tr>
+<td style="text-align:left">Suriname</td>
+</tr>
+<tr>
+<td style="text-align:left">Sweden</td>
+</tr>
+<tr>
+<td style="text-align:left">Switzerland</td>
+</tr>
+<tr>
+<td style="text-align:left">Syria</td>
+</tr>
+<tr>
+<td style="text-align:left">Taiwan</td>
+</tr>
+<tr>
+<td style="text-align:left">Tajikistan</td>
+</tr>
+<tr>
+<td style="text-align:left">Tanzania</td>
+</tr>
+<tr>
+<td style="text-align:left">Thailand</td>
+</tr>
+<tr>
+<td style="text-align:left">Timor-Leste</td>
+</tr>
+<tr>
+<td style="text-align:left">Togo</td>
+</tr>
+<tr>
+<td style="text-align:left">Tonga</td>
+</tr>
+<tr>
+<td style="text-align:left">Trinidad and Tobago</td>
+</tr>
+<tr>
+<td style="text-align:left">Tunisia</td>
+</tr>
+<tr>
+<td style="text-align:left">Turkey</td>
+</tr>
+<tr>
+<td style="text-align:left">Turkmenistan</td>
+</tr>
+<tr>
+<td style="text-align:left">Uganda</td>
+</tr>
+<tr>
+<td style="text-align:left">Ukraine</td>
+</tr>
+<tr>
+<td style="text-align:left">United Arab Emirates</td>
+</tr>
+<tr>
+<td style="text-align:left">United Kingdom</td>
+</tr>
+<tr>
+<td style="text-align:left">United States</td>
+</tr>
+<tr>
+<td style="text-align:left">United States Virgin Islands</td>
+</tr>
+<tr>
+<td style="text-align:left">Uruguay</td>
+</tr>
+<tr>
+<td style="text-align:left">Uzbekistan</td>
+</tr>
+<tr>
+<td style="text-align:left">Vanuatu</td>
+</tr>
+<tr>
+<td style="text-align:left">Venezuela</td>
+</tr>
+<tr>
+<td style="text-align:left">Vietnam</td>
+</tr>
+<tr>
+<td style="text-align:left">Yemen</td>
+</tr>
+<tr>
+<td style="text-align:left">Zambia</td>
+</tr>
+<tr>
+<td style="text-align:left">Zimbabwe</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Roadmap">Roadmap<a class="anchor-link" href="#Roadmap"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Improve speed of fetching restriction dates.</li>
+<li>Introduction of ISO country code to search with.</li>
+<li>More restrictions imposed - school closure, workplace closure, international travel etc.</li>
+<li>Restrictions for vaccinated and non-vaccinated.</li>
+<li>More data formats.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Contributions">Contributions<a class="anchor-link" href="#Contributions"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Issues and pull requests are always welcome.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Acknowledgements">Acknowledgements<a class="anchor-link" href="#Acknowledgements"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A huge massive thanks to Oxford University for open sourcing their data that they've been collecting since the pandemic began. Without them this package wouldn't be possible so please go check them out!</p>
+<p>Repo - <a href="https://github.com/OxCGRT/covid-policy-tracker">https://github.com/OxCGRT/covid-policy-tracker</a>
+<br/>COVID-19 Government Response Tracker - www.bsg.ox.ac.uk/covidtracker</p>
+
+</div>
+</div>
+</div>
 </div>
  
 

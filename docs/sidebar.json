@@ -1,6 +1,6 @@
 {
   "lockdowndates": {
     "Overview": "/",
-    "Lockdown dates": "core.html"
+    "lockdowndates": "core.html"
   }
 }

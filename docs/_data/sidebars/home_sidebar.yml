@@ -10,7 +10,7 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Lockdown dates
+      title: lockdowndates
       url: core.html
     output: web
     title: lockdowndates
