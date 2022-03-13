@@ -11,7 +11,7 @@
 Single Country
 
 ```python
-#slow
+#ignore
 ld = LockdownDates("Aruba", "2022-01-01", "2022-01-08")
 lockdown_dates = ld.dates()
 lockdown_dates
@@ -88,7 +88,7 @@ lockdown_dates
 Multiple Countries
 
 ```python
-#slow
+#ignore
 ld2 = LockdownDates(["Canada", "Denmark"], "2022-01-01", "2022-01-08")
 lockdown_dates = ld2.dates()
 lockdown_dates
