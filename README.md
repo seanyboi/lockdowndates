@@ -8,7 +8,11 @@
 
 ## How to use
 
-Single Country
+### Import
+
+`from lockdowndates.core import LockdownDates`
+
+### Single Country
 
 ```python
 ld = LockdownDates("Aruba", "2022-01-01", "2022-01-08")
@@ -84,7 +88,7 @@ lockdown_dates
 
 
 
-Multiple Countries
+### Multiple Countries
 
 ```python
 ld2 = LockdownDates(["Canada", "Denmark"], "2022-01-01", "2022-01-08")
