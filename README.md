@@ -1,6 +1,11 @@
 # lockdowndates
 > Retrieve the dates of the restrictions in countries imposed by governments around the world during the covid-19 pandemic.
 
+## Requirements
+
+`python version 3.8`
+
+We require python version for *now* due to fetching a large file using `pyarrow` engine supplied by `pandas 1.4.0` which needs `python 3.8`. Hopefully this wont be the case soon and we will support `python 3.6` and up.
 
 ## Install
 
