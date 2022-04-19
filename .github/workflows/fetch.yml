@@ -19,13 +19,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
       - uses: keithweaver/aws-s3-github-action@v1.0.0 # Verifies the recursive flag
         name: Copy Folder
         with:
           command: cp
-          source: ./data/
-          destination: s3://lockdowndates/data/
+          source: s3://lockdowndates/data/
+          destination: ./data/
           aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: eu-west-1
