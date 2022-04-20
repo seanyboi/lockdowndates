@@ -19,12 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Check folder exists
-        run: |
-             [ -d "./data/" ] && echo "Directory ./data/ exists."
-             [ -d "data" ] && echo "Directory ./data/ exists 2."
-             [ -d "./data" ] && echo "Directory ./data/ exists 3."
+      - uses: actions/checkout@v2
       - uses: keithweaver/aws-s3-github-action@v1.0.0 # Verifies the recursive flag
         name: sync folder
         with:
@@ -35,3 +30,10 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_region: eu-west-1
           flags: --delete
+      - name: Commit changes
+        run: |
+         git config --local user.email "action@github.com"
+         git config --local user.name "GitHub Action"
+         git add .
+         git diff-index --quiet HEAD || git commit -m "covid data update" -a
+         git push origin develop:develop
