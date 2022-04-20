@@ -19,6 +19,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v1
+      - name: Check folder exists
+        run: |
+             [ -d "./data/" ] && echo "Directory ./data/ exists."
+             [ -d "data" ] && echo "Directory ./data/ exists 2."
+             [ -d "./data" ] && echo "Directory ./data/ exists 3."
       - uses: keithweaver/aws-s3-github-action@v1.0.0 # Verifies the recursive flag
         name: sync folder
         with:
