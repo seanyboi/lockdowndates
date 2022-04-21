@@ -36,4 +36,4 @@ jobs:
          git config --local user.name "GitHub Action"
          git add .
          git diff-index --quiet HEAD || git commit -m "covid data update" -a
-         git push origin develop:develop
+         git push origin main:main
