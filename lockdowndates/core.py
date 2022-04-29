@@ -19,8 +19,6 @@ class LockdownDates:
        <br/>`end_date`: Date you wish to collect dates from in "YYYY-MM-DD" format
     '''
 
-    lockdown_url = 'https://raw.githubusercontent.com/OxCGRT/covid-policy-tracker/master/data/OxCGRT_latest.csv'
-
     def __init__(self, country:Union[List[str],str], start_date:str, end_date:str):
 
         if isinstance(country, list):
@@ -30,12 +28,17 @@ class LockdownDates:
 
         if isinstance(start_date, str):
             self.start_date = dt.strptime(start_date, "%Y-%m-%d")
+        else:
+            print("Incorrect format for start_date, expecting %Y-%m-%d")
 
         if isinstance(end_date, str):
             self.end_date = dt.strptime(end_date, "%Y-%m-%d")
+        else:
+            print("Incorrect format for end_date, expecting %Y-%m-%d")
 
-    @classmethod
-    def fetch(cls) -> pd.DataFrame:
+    def fetch(self) -> pd.DataFrame:
+
+        usecols=["CountryName", "CountryCode", "Date", "C6_Stay at home requirements"]
 
         df_dtype = {
             "CountryName": str,
@@ -43,15 +46,14 @@ class LockdownDates:
             "Date": str,
         }
 
-        usecols=["CountryName", "CountryCode", "Date", "C6_Stay at home requirements"]
-
         print("Fetching lockdown dates...")
         try:
-            lockdown_df = pd.read_csv(cls.lockdown_url, usecols=usecols, dtype=df_dtype, engine="pyarrow")
+            urls = [f"https://github.com/seanyboi/lockdowndates_data/blob/main/data/{country.lower().replace(' ', '')}.parquet?raw=true" for country in self.country]
+            lockdown_df = pd.concat((pd.read_parquet(u, columns=usecols, engine="pyarrow") for u in urls))
+            lockdown_df = lockdown_df.astype(df_dtype)
+            return lockdown_df
         except Exception as e:
             print(f"Error fetching lockdown data - {e}")
-
-        return lockdown_df
 
 
     def engineer_df(self) -> pd.DataFrame:
@@ -89,7 +91,6 @@ class LockdownDates:
 
     def filter_df(self) -> pd.DataFrame:
         df = self.engineer_df()
-
         try:
             df = df[df['country'].isin(self.country)]
             df = df.pivot_table(index="timestamp", columns='country', aggfunc='first')
@@ -122,7 +123,7 @@ class LockdownDates:
         restrictions = self.filter_df()
         try:
             if save:
-                output_file = f"lockdown-restrictions.csv"
+                output_file = f"{self.country.lower().replace(' ','')}-lockdown-restrictions.csv"
                 output_dir = Path("lockdown_data")
                 output_dir.mkdir(parents=True, exist_ok=True)
                 restrictions.to_csv(output_dir / output_file, index=False)
