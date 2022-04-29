@@ -6,8 +6,6 @@
 
 `python version 3.8`
 
-We require python version for now due to fetching a large file using pyarrow engine supplied by `pandas 1.4.0` which needs `python 3.8`. Hopefully this wont be the case soon and we will support `python 3.6` and up.
-
 ## Install
 
 `pip install lockdowndates`
@@ -16,13 +14,13 @@ We require python version for now due to fetching a large file using pyarrow eng
 
 ### Import
 
-```
+```python
 from lockdowndates.core import LockdownDates
 ```
 
 ### Single Country
 
-```
+```python
 ld = LockdownDates("Aruba", "2022-01-01", "2022-01-08")
 lockdown_dates = ld.dates()
 lockdown_dates
@@ -36,19 +34,6 @@ lockdown_dates
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -111,7 +96,7 @@ lockdown_dates
 
 ### Multiple Countries
 
-```
+```python
 ld2 = LockdownDates(["Canada", "Denmark"], "2022-01-01", "2022-01-08")
 lockdown_dates = ld2.dates()
 lockdown_dates
@@ -125,19 +110,6 @@ lockdown_dates
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -417,13 +389,14 @@ stay_at_home values:
 
 ## Roadmap
 
-* Improve speed of fetching restriction dates.
 * Introduction of ISO country code to search with.
 * More restrictions imposed - school closure, workplace closure, international travel etc.
 * Restrictions for vaccinated and non-vaccinated.
 * More data formats.
 
 ## Contributions
+
+If there are any restrictions or policies you wish to be added to the package please let me know!
 
 Issues and pull requests are always welcome.
 
