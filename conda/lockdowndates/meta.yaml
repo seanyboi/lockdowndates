@@ -1,9 +1,9 @@
 package:
   name: lockdowndates
-  version: 0.0.1
+  version: 0.0.3
 source:
-  sha256: 8b518b4032a02b3fae316c21115414c754559b665d58ae3fbe125834c2987dba
-  url: https://files.pythonhosted.org/packages/0d/7f/bd2fc4297564d41f39a6e4a65f4b0341422bae3ec799b38d0909adf81bed/lockdowndates-0.0.1.tar.gz
+  sha256: cc7a5a8c9e8748f79b30810916f594660653372951359af7ad88155b1f53dbbe
+  url: https://files.pythonhosted.org/packages/14/a4/de3fa0f0821a89b26a6d35439e4d33e75de9f4b1313ea64fe85fbf43a9d2/lockdowndates-0.0.3.tar.gz
 about:
   dev_url: https://seanyboi.github.io
   doc_url: https://seanyboi.github.io
@@ -24,13 +24,13 @@ requirements:
   - pip
   - python
   - packaging
-  - pandas==1.1.4
+  - pandas==1.4.0
   - pyarrow
   run:
   - pip
   - python
   - packaging
-  - pandas==1.1.4
+  - pandas==1.4.0
   - pyarrow
 test:
   imports:
