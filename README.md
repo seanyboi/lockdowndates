@@ -1,6 +1,7 @@
 # lockdowndates
 > Retrieve the dates of the restrictions in countries imposed by governments around the world during the covid-19 pandemic.
 
+[![Downloads](https://static.pepy.tech/personalized-badge/lockdowndates?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/lockdowndates)
 
 ## Requirements
 
@@ -9,6 +10,7 @@
 ## Install
 
 `pip install lockdowndates`
+
 `conda install -c seanyboi lockdowndates`
 
 ## How to use
