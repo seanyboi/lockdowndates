@@ -1,7 +1,6 @@
 # lockdowndates
 > Retrieve the dates of the restrictions in countries imposed by governments around the world during the covid-19 pandemic.
 
-[![Downloads](https://static.pepy.tech/personalized-badge/lockdowndates?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/lockdowndates)
 
 ## Requirements
 
@@ -10,18 +9,19 @@
 ## Install
 
 `pip install lockdowndates`
+`conda install -c seanyboi lockdowndates`
 
 ## How to use
 
 ### Import
 
-```python
+```
 from lockdowndates.core import LockdownDates
 ```
 
 ### Single Country
 
-```python
+```
 ld = LockdownDates("Aruba", "2022-01-01", "2022-01-08")
 lockdown_dates = ld.dates()
 lockdown_dates
@@ -97,7 +97,7 @@ lockdown_dates
 
 ### Multiple Countries
 
-```python
+```
 ld2 = LockdownDates(["Canada", "Denmark"], "2022-01-01", "2022-01-08")
 lockdown_dates = ld2.dates()
 lockdown_dates
