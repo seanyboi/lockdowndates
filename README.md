@@ -1,7 +1,6 @@
 # lockdowndates
 > Retrieve the dates of the restrictions in countries imposed by governments around the world during the covid-19 pandemic.
 
-[![Downloads](https://static.pepy.tech/personalized-badge/lockdowndates?period=total&units=international_system&left_color=black&right_color=orange&left_text=Downloads)](https://pepy.tech/project/lockdowndates)
 
 ## Requirements
 
@@ -17,13 +16,13 @@ We require python version for now due to fetching a large file using pyarrow eng
 
 ### Import
 
-```python
+```
 from lockdowndates.core import LockdownDates
 ```
 
 ### Single Country
 
-```python
+```
 ld = LockdownDates("Aruba", "2022-01-01", "2022-01-08")
 lockdown_dates = ld.dates()
 lockdown_dates
@@ -37,6 +36,19 @@ lockdown_dates
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -99,7 +111,7 @@ lockdown_dates
 
 ### Multiple Countries
 
-```python
+```
 ld2 = LockdownDates(["Canada", "Denmark"], "2022-01-01", "2022-01-08")
 lockdown_dates = ld2.dates()
 lockdown_dates
@@ -113,6 +125,19 @@ lockdown_dates
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
