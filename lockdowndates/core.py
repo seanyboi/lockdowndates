@@ -7,7 +7,7 @@ __all__ = ['LockdownDates']
 import pandas as pd
 import numpy as np
 from datetime import datetime as dt
-from typing import List, Union
+from typing import List, Union, Tuple, Optional
 
 # Cell
 class LockdownDates:
@@ -17,9 +17,10 @@ class LockdownDates:
        `country`: Country from table of countries in README.md
        <br/>`start_date`: Date you wish to collect dates from in "YYYY-MM-DD" format
        <br/>`end_date`: Date you wish to collect dates from in "YYYY-MM-DD" format
+       `restrictions`: List of restrictions to be returned listed in README.md
     '''
 
-    def __init__(self, country:Union[List[str],str], start_date:str, end_date:str):
+    def __init__(self, country:Union[List[str],str], start_date:str, end_date:str, restrictions: Union[List, Tuple]):
 
         if isinstance(country, list):
             self.country = country
@@ -36,9 +37,20 @@ class LockdownDates:
         else:
             print("Incorrect format for end_date, expecting %Y-%m-%d")
 
+        if isinstance(restrictions, list) or isinstance(restrictions, tuple):
+            self.restrictions = restrictions
+            self.restriction_keys = {
+                "stay_at_home" : "C6_Stay at home requirements",
+                "masks" : "H6_Facial Coverings"
+            }
+        else:
+            print(f"Incorrect format for restrictions, you provided {type(restrictions)}, needed to be list or tuple")
+
     def fetch(self) -> pd.DataFrame:
 
-        usecols=["CountryName", "CountryCode", "Date", "C6_Stay at home requirements"]
+        restrictions_to_be_used = [self.restriction_keys[restriction] for restriction in self.restrictions]
+
+        usecols= ["CountryName", "CountryCode", "Date"] + restrictions_to_be_used
 
         df_dtype = {
             "CountryName": str,
@@ -62,12 +74,13 @@ class LockdownDates:
 
         try:
 
+            restriction_names = dict(zip(self.restriction_keys.values(), self.restriction_keys.keys()))
             # rename columns
             rename_columns = columns={
                 "CountryName": "country",
                 "CountryCode": "country_code",
                 "Date": "timestamp",
-                "C6_Stay at home requirements": "stay_at_home",
+                **restriction_names
             }
 
             df = df.rename(columns=rename_columns)
@@ -77,7 +90,8 @@ class LockdownDates:
             df["timestamp"] = pd.to_datetime(df["timestamp"])
 
             # convert columns to categories
-            for col in ['country', 'country_code', 'stay_at_home']:
+            restriction_cats = list(self.restriction_keys.keys()) + ['country', 'country_code']
+            for col in restriction_cats:
                 df[col] = df[col].astype('category')
 
             if len(self.country) == 1:

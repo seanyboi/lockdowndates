@@ -50,8 +50,8 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install lockdowndates</code>
-<code>conda install -c seanyboi lockdowndates</code></p>
+<p><code>pip install lockdowndates</code></p>
+<p><code>conda install -c seanyboi lockdowndates</code></p>
 
 </div>
 </div>
@@ -87,6 +87,34 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Restrictions">Restrictions<a class="anchor-link" href="#Restrictions"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Below are the restrictions you can add to the <code>LockdownDates()</code> restrictions parameter and their meanings. You must specifiy a restriction when initiating your class and can do so with a list: <code>["stay_at_home",...]</code> or tuple: <code>("masks",...)</code></p>
+<p><em>stay_at_home</em>:</p>
+<ul>
+<li>NaN - No data available for that date.</li>
+<li>1.0 - recommend not leaving house.</li>
+<li>2.0 -  require not leaving house with exceptions for daily exercise, grocery shopping, and 'essential' trips.</li>
+<li>3.0 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc.</li>
+</ul>
+<p><em>masks</em>:</p>
+<ul>
+<li>0.0 - No policy.</li>
+<li>1.0 - Recommended.</li>
+<li>2.0 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible.</li>
+<li>3.0 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible.</li>
+<li>4.0 - Required outside the home at all times regardless of location or presence of other people.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Single-Country">Single Country<a class="anchor-link" href="#Single-Country"> </a></h3>
 </div>
 </div>
@@ -98,7 +126,7 @@ nb_path: "index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ld</span> <span class="o">=</span> <span class="n">LockdownDates</span><span class="p">(</span><span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-08&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ld</span> <span class="o">=</span> <span class="n">LockdownDates</span><span class="p">(</span><span class="s2">&quot;Aruba&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-08&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;stay_at_home&quot;</span><span class="p">,</span> <span class="s2">&quot;masks&quot;</span><span class="p">))</span>
 <span class="n">lockdown_dates</span> <span class="o">=</span> <span class="n">ld</span><span class="o">.</span><span class="n">dates</span><span class="p">()</span>
 <span class="n">lockdown_dates</span>
 </pre></div>
@@ -141,10 +169,12 @@ Fetched lockdown dates for: Aruba
     <tr style="text-align: right;">
       <th></th>
       <th>aruba_country_code</th>
+      <th>aruba_masks</th>
       <th>aruba_stay_at_home</th>
     </tr>
     <tr>
       <th>timestamp</th>
+      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -154,40 +184,48 @@ Fetched lockdown dates for: Aruba
       <th>2022-01-01</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-02</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-03</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-04</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-05</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-06</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-07</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-08</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
   </tbody>
@@ -215,7 +253,7 @@ Fetched lockdown dates for: Aruba
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ld2</span> <span class="o">=</span> <span class="n">LockdownDates</span><span class="p">([</span><span class="s2">&quot;Canada&quot;</span><span class="p">,</span> <span class="s2">&quot;Denmark&quot;</span><span class="p">],</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-08&quot;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ld2</span> <span class="o">=</span> <span class="n">LockdownDates</span><span class="p">([</span><span class="s2">&quot;Canada&quot;</span><span class="p">,</span> <span class="s2">&quot;Denmark&quot;</span><span class="p">],</span> <span class="s2">&quot;2022-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2022-01-08&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;stay_at_home&quot;</span><span class="p">,</span> <span class="s2">&quot;masks&quot;</span><span class="p">))</span>
 <span class="n">lockdown_dates</span> <span class="o">=</span> <span class="n">ld2</span><span class="o">.</span><span class="n">dates</span><span class="p">()</span>
 <span class="n">lockdown_dates</span>
 </pre></div>
@@ -259,11 +297,15 @@ Fetched lockdown dates for: Canada, Denmark
       <th></th>
       <th>canada_country_code</th>
       <th>denmark_country_code</th>
+      <th>canada_masks</th>
+      <th>denmark_masks</th>
       <th>canada_stay_at_home</th>
       <th>denmark_stay_at_home</th>
     </tr>
     <tr>
       <th>timestamp</th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -275,6 +317,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-01</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -282,6 +326,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-02</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -289,6 +335,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-03</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -296,6 +344,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-04</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -303,6 +353,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-05</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -310,6 +362,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-06</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -317,6 +371,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-07</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -324,6 +380,8 @@ Fetched lockdown dates for: Canada, Denmark
       <th>2022-01-08</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -339,19 +397,6 @@ Fetched lockdown dates for: Canada, Denmark
 </div>
     {% endraw %}
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>stay_at_home values:</p>
-<ul>
-<li>NaN - No data available for that date.</li>
-<li>1.0 - recommend not leaving house.</li>
-<li>2.0 -  require not leaving house with exceptions for daily exercise, grocery shopping, and 'essential' trips.</li>
-<li>3.0 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc.</li>
-</ul>
-
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Available-Countries">Available Countries<a class="anchor-link" href="#Available-Countries"> </a></h2>
@@ -939,10 +984,7 @@ Fetched lockdown dates for: Canada, Denmark
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Introduction of ISO country code to search with.</li>
-<li>More restrictions imposed - school closure, workplace closure, international travel etc.</li>
-<li>Restrictions for vaccinated and non-vaccinated.</li>
-<li>More data formats.</li>
+<li>More restrictions</li>
 </ul>
 
 </div>
