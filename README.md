@@ -11,8 +11,6 @@
 
 `pip install lockdowndates`
 
-`conda install -c seanyboi lockdowndates`
-
 ## How to use
 
 ### Import
