@@ -17,14 +17,31 @@
 
 ### Import
 
-```
+```python
 from lockdowndates.core import LockdownDates
 ```
 
+### Restrictions
+
+Below are the restrictions you can add to the `LockdownDates()` restrictions parameter and their meanings. You must specifiy a restriction when initiating your class and can do so with a list: `["stay_at_home",...]` or tuple: `("masks",...)`
+
+*stay_at_home*:
+- NaN - No data available for that date.
+- 1.0 - recommend not leaving house.
+- 2.0 -  require not leaving house with exceptions for daily exercise, grocery shopping, and 'essential' trips.
+- 3.0 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc.
+
+*masks*:
+- 0.0 - No policy.
+- 1.0 - Recommended.
+- 2.0 - Required in some specified shared/public spaces outside the home with other people present, or some situations when social distancing not possible.
+- 3.0 - Required in all shared/public spaces outside the home with other people present or all situations when social distancing not possible.
+- 4.0 - Required outside the home at all times regardless of location or presence of other people.
+
 ### Single Country
 
-```
-ld = LockdownDates("Aruba", "2022-01-01", "2022-01-08")
+```python
+ld = LockdownDates("Aruba", "2022-01-01", "2022-01-08", ("stay_at_home", "masks"))
 lockdown_dates = ld.dates()
 lockdown_dates
 ```
@@ -42,10 +59,12 @@ lockdown_dates
     <tr style="text-align: right;">
       <th></th>
       <th>aruba_country_code</th>
+      <th>aruba_masks</th>
       <th>aruba_stay_at_home</th>
     </tr>
     <tr>
       <th>timestamp</th>
+      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -55,40 +74,48 @@ lockdown_dates
       <th>2022-01-01</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-02</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-03</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-04</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-05</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-06</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-07</th>
       <td>ABW</td>
       <td>2.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
       <th>2022-01-08</th>
       <td>ABW</td>
+      <td>2.0</td>
       <td>2.0</td>
     </tr>
   </tbody>
@@ -99,8 +126,8 @@ lockdown_dates
 
 ### Multiple Countries
 
-```
-ld2 = LockdownDates(["Canada", "Denmark"], "2022-01-01", "2022-01-08")
+```python
+ld2 = LockdownDates(["Canada", "Denmark"], "2022-01-01", "2022-01-08", ("stay_at_home", "masks"))
 lockdown_dates = ld2.dates()
 lockdown_dates
 ```
@@ -119,11 +146,15 @@ lockdown_dates
       <th></th>
       <th>canada_country_code</th>
       <th>denmark_country_code</th>
+      <th>canada_masks</th>
+      <th>denmark_masks</th>
       <th>canada_stay_at_home</th>
       <th>denmark_stay_at_home</th>
     </tr>
     <tr>
       <th>timestamp</th>
+      <th></th>
+      <th></th>
       <th></th>
       <th></th>
       <th></th>
@@ -135,6 +166,8 @@ lockdown_dates
       <th>2022-01-01</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -142,6 +175,8 @@ lockdown_dates
       <th>2022-01-02</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -149,6 +184,8 @@ lockdown_dates
       <th>2022-01-03</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -156,6 +193,8 @@ lockdown_dates
       <th>2022-01-04</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -163,6 +202,8 @@ lockdown_dates
       <th>2022-01-05</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -170,6 +211,8 @@ lockdown_dates
       <th>2022-01-06</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -177,6 +220,8 @@ lockdown_dates
       <th>2022-01-07</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -184,6 +229,8 @@ lockdown_dates
       <th>2022-01-08</th>
       <td>CAN</td>
       <td>DNK</td>
+      <td>3.0</td>
+      <td>2.0</td>
       <td>1.0</td>
       <td>0.0</td>
     </tr>
@@ -192,12 +239,6 @@ lockdown_dates
 </div>
 
 
-
-stay_at_home values:
-- NaN - No data available for that date.
-- 1.0 - recommend not leaving house.
-- 2.0 -  require not leaving house with exceptions for daily exercise, grocery shopping, and 'essential' trips.
-- 3.0 - require not leaving house with minimal exceptions (eg allowed to leave once a week, or only one person can leave at a time, etc.
 
 ## Available Countries
 
@@ -392,10 +433,7 @@ stay_at_home values:
 
 ## Roadmap
 
-* Introduction of ISO country code to search with.
-* More restrictions imposed - school closure, workplace closure, international travel etc.
-* Restrictions for vaccinated and non-vaccinated.
-* More data formats.
+* More restrictions
 
 ## Contributions
 
