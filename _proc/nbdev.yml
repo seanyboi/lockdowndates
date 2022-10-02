@@ -1,0 +1,9 @@
+project:
+  output-dir: docs
+
+website:
+  title: "lockdowndates"
+  site-url: "https://seanyboi.github.io/lockdowndates/"
+  description: "Retrieve the dates of the restrictions in countries imposed by governments around the world during the covid-19 pandemic."
+  repo-branch: main
+  repo-url: "https://github.com/seanyboi/lockdowndates/tree/main/"
